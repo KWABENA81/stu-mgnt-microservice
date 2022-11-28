@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="config-server" />
+        <module name="studentms-client" />
+        <module name="studentms" />
+        <module name="kafka-producer" />
+        <module name="api-gateway" />
+        <module name="eureka-server" />
+        <module name="cloud-gateway" />
+        <module name="oauth-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="api-gateway" target="11" />
+      <module name="cloud-gateway" target="11" />
+      <module name="config-server" target="17" />
+      <module name="eureka-server" target="11" />
+      <module name="kafka-producer" target="11" />
+      <module name="oauth-server" target="11" />
+      <module name="studentms" target="11" />
+      <module name="studentms-client" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-gateway" options="-parameters" />
+      <module name="cloud-gateway" options="-parameters" />
+      <module name="config-server" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
+      <module name="kafka-producer" options="-parameters" />
+      <module name="oauth-server" options="-parameters" />
+      <module name="studentms" options="-parameters" />
+      <module name="studentms-client" options="-parameters" />
+    </option>
+  </component>
+</project>
