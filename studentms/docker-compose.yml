@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  student-ms:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    
+    volumes:
+      - '/etc/timezone:/etc/timezone:ro'
+      - '/etc/localtime:/etc/localtime:ro'
+    ports:
+      - '8091:8091'
+    networks:
+          - ms_networks
+#    depends_on:
+#      - eureka-server
+
+
+networks:
+  ms_networks:
+    external: true
+    #driver: bridge
+    name: ms_networks
+
+
