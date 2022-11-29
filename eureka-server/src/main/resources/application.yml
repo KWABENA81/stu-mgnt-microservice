@@ -2,21 +2,13 @@ server:
   port: 8761
 
 spring:
-  #  h2:
-  #    console:
-  #      enabled: true
-  #
   application:
     name: eureka-server
-#
+
 eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
-#    service-url:
-#      defaultZone: http://localhost:8761/eureka/
-#
-#  instance:
-#    hostname: localhost
-
+    eureka-server-connect-timeout-seconds: 5
+    enabled: true
 
