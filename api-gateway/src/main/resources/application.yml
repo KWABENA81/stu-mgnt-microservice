@@ -25,12 +25,21 @@ spring:
           filters:
             - RewritePath= /dummy-studentms-client/(?<path>.*), /$\{path}
 
-
-
+        - id: oauth-serverid
+          uri: lb://OAUTH2-SERVER
+          predicates:
+            - Path= /dummy-oauth2-server/**
+          filters:
+            - RewritePath= /dummy-oauth2-server/(?<path>.*), /$\{path}
 eureka:
   client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+  instance:
+    hostname: localhost
 
 # Actuator
 management:

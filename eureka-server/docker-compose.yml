@@ -18,5 +18,3 @@ networks:
     #external: true
     driver: bridge
     name: ms_networks
-
-
