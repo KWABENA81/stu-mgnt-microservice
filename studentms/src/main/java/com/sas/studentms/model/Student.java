@@ -1,8 +1,17 @@
 package com.sas.studentms.model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import javax.persistence.*;
 
+@Data
+@Slf4j
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "STUDENT_TB")
 public class Student implements Comparable<Student> {
@@ -18,38 +27,38 @@ public class Student implements Comparable<Student> {
     @Column(name = "STUDENTID", nullable = false, unique = true, length = 30)
     private String studentId;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
-    }
-
+    //    public Integer getId() {
+//        return id;
+//    }
+//
+//    public void setId(Integer id) {
+//        this.id = id;
+//    }
+//
+//    public String getLastName() {
+//        return lastName;
+//    }
+//
+//    public void setLastName(String lastName) {
+//        this.lastName = lastName;
+//    }
+//
+//    public String getFirstName() {
+//        return firstName;
+//    }
+//
+//    public void setFirstName(String firstName) {
+//        this.firstName = firstName;
+//    }
+//
+//    public String getStudentId() {
+//        return studentId;
+//    }
+//
+//    public void setStudentId(String studentId) {
+//        this.studentId = studentId;
+//    }
+//
     @Override
     public int compareTo(Student st) {
         int value = this.lastName.compareTo(st.lastName);
@@ -61,16 +70,16 @@ public class Student implements Comparable<Student> {
         }
         return value;
     }
-
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", studentId='" + studentId + '\'' +
-                '}';
-    }
+//
+//
+//    @Override
+//    public String toString() {
+//        return "Student{" +
+//                "id=" + id +
+//                ", firstName='" + firstName + '\'' +
+//                ", lastName='" + lastName + '\'' +
+//                ", studentId='" + studentId + '\'' +
+//                '}';
+//    }
 
 }

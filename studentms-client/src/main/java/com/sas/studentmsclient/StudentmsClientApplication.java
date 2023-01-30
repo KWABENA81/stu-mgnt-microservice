@@ -2,14 +2,15 @@ package com.sas.studentmsclient;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
-@EnableHystrix
+@EnableEurekaClient
+//@EnableHystrix
 public class StudentmsClientApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(StudentmsClientApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(StudentmsClientApplication.class, args);
+    }
 
 }

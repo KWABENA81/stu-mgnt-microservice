@@ -2,6 +2,7 @@ package com.sas.studentms.api;
 
 import com.sas.studentms.model.Student;
 import com.sas.studentms.service.StudentService;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RestController
 @RequestMapping("/student")
 public class StudentResource {
@@ -21,12 +23,12 @@ public class StudentResource {
     @Autowired
     private StudentService studentService;
 
-    @GetMapping("/allStudents")
-    public List<Student> allStudents() {
+    @GetMapping("/students")
+    public List<Student> students() {
         return studentService.findAll().stream().collect(Collectors.toList());
     }
 
-    @GetMapping("/students/{id}")
+    @GetMapping("/{id}")   //  ("/students/{id}")
     public ResponseEntity<Student> findStudentById(@PathVariable Integer id) {
         Student studentOpt = studentService.findById(id);
         if (studentOpt != null) {
@@ -38,7 +40,7 @@ public class StudentResource {
     }
 
 
-//    @DeleteMapping("/students/{id}")
+    //    @DeleteMapping("/students/{id}")
 //    public ResponseEntity<Integer> deleteStudentById(@PathVariable Integer id) {
 //        boolean isRemoved = studentService.delete(id);
 //        if (!isRemoved) {
@@ -48,18 +50,22 @@ public class StudentResource {
 //        LOGGER.info("Student with #id {} has been deleted", id);
 //        return new ResponseEntity<>(id, HttpStatus.OK);
 //    }
-
-
-    @GetMapping("/students/{studentid}")
-    public ResponseEntity<Student> findByStudentId(@PathVariable String studentId) {
-        Student student = studentService.findByStudentId(studentId);
-        if (student != null) {
-            LOGGER.info("Student found with student id {}", studentId);
-            return ResponseEntity.ok(student);
-        }
-        LOGGER.error("Student not found with student id {}", studentId);
-        return ResponseEntity.notFound().build();
+    @PostMapping("/register")
+    public Student register(@RequestBody Student student) {
+        log.info("register student {}",student);
+        return studentService.saveRegistration(student);
     }
+
+//    @GetMapping("/students/{studentid}")
+//    public ResponseEntity<Student> findByStudentId(@PathVariable String studentId) {
+//        Student student = studentService.findByStudentId(studentId);
+//        if (student != null) {
+//            LOGGER.info("Student found with student id {}", studentId);
+//            return ResponseEntity.ok(student);
+//        }
+//        LOGGER.error("Student not found with student id {}", studentId);
+//        return ResponseEntity.notFound().build();
+//    }
 
     @PostMapping("/student")
     public ResponseEntity<Student> createStudent(@RequestBody Student student) throws URISyntaxException {
@@ -67,7 +73,7 @@ public class StudentResource {
         return ResponseEntity.created(new URI(studentSaved.getId().toString())).body(studentSaved);
     }
 
-    @PutMapping("/students/{id}")
+    @PutMapping("/{id}")   //("/students/{id}")
     public Student updateStudent(@RequestBody Student student, @PathVariable Integer id) {
         Student student_db = studentService.findById(id);
         if (student_db != null) {

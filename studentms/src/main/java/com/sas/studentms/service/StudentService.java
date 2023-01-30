@@ -2,19 +2,19 @@ package com.sas.studentms.service;
 
 import com.sas.studentms.model.Student;
 import com.sas.studentms.repo.StudentRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 public class StudentService implements IStudentService {
 
     @Autowired
-    StudentRepository studentRepository;
+    private StudentRepository studentRepository;
 
 
 //    @Override
@@ -64,6 +64,12 @@ public class StudentService implements IStudentService {
 //    }
 
     public Student save(Student student) {
+
+        return studentRepository.save(student);
+    }
+
+    public Student saveRegistration(Student student) {
+        log.info("register student {}", student);
         return studentRepository.save(student);
     }
 }
